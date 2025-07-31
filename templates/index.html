@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Host Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="terminal">
+    <div class="terminal-box">
+        <h1>🗂️ File Uploader Made By Bipu</h1>
+        <form id="uploadForm" method="post" enctype="multipart/form-data">
+            <input type="file" id="fileInput" name="files" multiple hidden>
+            <button type="button" onclick="fileInput.click()">📂 Choose Files</button>
+
+            <div id="dropZone" onclick="fileInput.click()">
+                📁 Drag & Drop Files Here or Click
+            </div>
+
+            <input type="submit" value="Upload">
+        </form>
+
+        <h2>📄 Uploaded Files</h2>
+        <ul>
+            {% for file in files %}
+            <li>
+                {{ file }} —
+                <a href="{{ url_for('download_file', filename=file) }}">Download</a> |
+                <a href="{{ url_for('delete_file', filename=file) }}">Delete</a>
+            </li>
+            {% else %}
+            <li>No files uploaded.</li>
+            {% endfor %}
+        </ul>
+
+        <iframe src="/text" width="100%" height="400" style="border:1px solid #33ff33;"></iframe>
+        <p><a href="{{ url_for('shared_files') }}">🌐 View Public Shared Files</a></p>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            fileInput.files = e.dataTransfer.files;
+            document.getElementById('uploadForm').submit();
+        });
+    </script>
+</body>
+</html>

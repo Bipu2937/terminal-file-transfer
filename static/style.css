@@ -1,0 +1,43 @@
+
+#dropZone {
+    border: 2px dashed #33ff33;
+    border-radius: 10px;
+    padding: 60px;
+    text-align: center;
+    color: #33ff33;
+    background: #111;
+    margin: 20px 0;
+    font-size: 1.2em;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+#dropZone.drag-over {
+    background-color: #222;
+}
+
+button {
+    background-color: #111;
+    border: 1px solid #33ff33;
+    color: #33ff33;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+body.terminal {
+    background-color: #000;
+    color: #33ff33;
+    font-family: monospace;
+    margin: 0;
+    padding: 40px;
+}
+
+.terminal-box {
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #33ff33;
+    padding: 30px;
+    border-radius: 8px;
+}

@@ -1,0 +1,25 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Text Sender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="terminal">
+    <div class="terminal-box">
+        <h1>📨 Send Text</h1>
+        <form method="POST">
+            <textarea name="text" rows="6" cols="50" placeholder="Type your message..."></textarea><br>
+            <input type="submit" value="Send Text">
+        </form>
+        <h2>📝 Message Log</h2>
+        <div class="message-log">
+            {% for line in text_lines %}
+                <p>{{ line }}</p>
+            {% endfor %}
+        </div>
+        <p><a href="{{ url_for('index') }}">⬅️ Back to Dashboard</a></p>
+    </div>
+</body>
+</html>

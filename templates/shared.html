@@ -1,0 +1,23 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Public Shared Files</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="terminal">
+    <div class="terminal-box">
+        <h1>📂 Shared Files</h1>
+        <ul>
+            {% for file in files %}
+            <li>
+                <a href="{{ url_for('shared_download', filename=file) }}">{{ file }}</a>
+            </li>
+            {% else %}
+            <li>No shared files available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

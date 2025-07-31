@@ -1,0 +1,27 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Login - Secure Terminal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="terminal">
+    <div class="terminal-box">
+        <h1>🖥️ Terminal Login</h1>
+        <form method="post">
+            <input type="password" name="password" placeholder="Enter password" required><br>
+            <input type="submit" value="Access Terminal">
+        </form>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="error">
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
